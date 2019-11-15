@@ -1,0 +1,132 @@
+@import "vars";
+@import "libs";
+@import "fonts";
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+html {
+  height: 100vh;
+  width: 100%;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  background: linear-gradient(306deg, #3066be, #6d9dc5, #14bd91, #80ded9, #7dc7dd, #079fb7);
+  background-size: 600% 600%;
+  background-attachment: fixed;
+
+  animation: AnimationName 30s linear infinite;
+
+  @keyframes AnimationName {
+    0% {
+      background-position: 0% 15%;
+    }
+    50% {
+      background-position: 100% 86%;
+    }
+    100% {
+      background-position: 0% 15%;
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#scene {
+  width: 100%;
+  height: 100%;
+}
+.dots {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  .shape {
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    border-width: 5px;
+    border-style: solid;
+  }
+  &:nth-child(n) .shape {
+  }
+  &:nth-child(n + 16) .shape {
+    border-radius: 100%;
+  }
+  &:nth-child(n + 32) .shape {
+    border: none;
+    &::before {
+      border: none;
+      content: "+";
+      font-size: 90px;
+      font-weight: 700;
+    }
+  }
+  &:nth-child(n) .shape {
+    border-color: #ffd13c;
+    color: #ffd13c;
+  }
+  &:nth-child(2n) .shape {
+    border-color: #ff6347;
+    color: #ff6347;
+  }
+  &:nth-child(3n) .shape {
+    border-color: green;
+    color: green;
+  }
+}
+.form {
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 500px;
+  width: 90%;
+  background-color: transparent;
+
+  &__title {
+		padding: 15px;
+		margin-bottom: 7px;
+    text-align: center;
+		position: relative;
+		background-color: rgba(#fff, 0.95);
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 7px;
+      width: 100%;
+      /* background: linear-gradient(306deg, #3066be, #6d9dc5, #14bd91, #80ded9, #7dc7dd, #079fb7);
+      background-size: 600% 600%;
+      background-attachment: fixed;
+      animation: AnimationName 3s linear infinite; */
+    }
+
+    /* border-bottom-width: 7px;
+		border-bottom-style: solid;
+		border-image: linear-gradient(306deg, #3066be, #6d9dc5, #14bd91, #80ded9, #7dc7dd, #079fb7) 1 stretch; */
+
+    font-family: "Oswald", sans-serif;
+    font-size: 24px;
+	}
+	&-inner{
+		background-color: rgba(#fff, 0.95);
+		height: 500px;
+		width: 100%;
+
+	}
+}
+
+@import "media";
