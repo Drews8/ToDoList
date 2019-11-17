@@ -1,0 +1,7 @@
+@mixin gradient-bg {
+  background: linear-gradient(306deg, #3066be, #6d9dc5, #14bd91, #80ded9, #7dc7dd, #079fb7);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-size: 10000px 10000px;
+  animation: AnimationName 30s linear infinite;
+}

@@ -11,13 +11,16 @@ html {
   height: 100vh;
   width: 100%;
 }
+:root {
+  font-size: 16px;
+}
 body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
 
   background: linear-gradient(306deg, #3066be, #6d9dc5, #14bd91, #80ded9, #7dc7dd, #079fb7);
-  background-size: 600% 600%;
+  background-size: 10000px 10000px;
   background-attachment: fixed;
 
   animation: AnimationName 30s linear infinite;
@@ -91,42 +94,168 @@ body {
   max-width: 500px;
   width: 90%;
   background-color: transparent;
+  &-header {
+    display: flex;
+    font-family: "Oswald", sans-serif;
+    margin-bottom: 3px;
+    background-color: rgba(#fff, 0.95);
 
-  &__title {
-		padding: 15px;
-		margin-bottom: 7px;
-    text-align: center;
-		position: relative;
-		background-color: rgba(#fff, 0.95);
+    &__title {
+      flex-grow: 2;
+      position: relative;
+      padding: 1rem;
+      padding-left: 4.5rem;
+      text-align: center;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+    }
+    &__btn {
+      width: 3.5rem;
+      height: 100%;
+      @include gradient-bg;
 
+      cursor: pointer;
+
+      line-height: 57px;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 2rem;
+      &.active::after {
+        font-family: "icomoon";
+        content: "\f068";
+      }
+      &::after {
+        font-family: "icomoon";
+        content: "\f067";
+        vertical-align: middle;
+      }
+    }
     &::after {
       content: "";
       position: absolute;
-      z-index: 2;
+      z-index: 10;
       bottom: 0;
       left: 0;
       right: 0;
       height: 7px;
       width: 100%;
-      /* background: linear-gradient(306deg, #3066be, #6d9dc5, #14bd91, #80ded9, #7dc7dd, #079fb7);
-      background-size: 600% 600%;
-      background-attachment: fixed;
-      animation: AnimationName 3s linear infinite; */
     }
+  }
+  &-inner {
+    padding-bottom: 0.3rem;
+    background-color: rgba(#fff, 0.95);
+    height: auto;
+    width: 100%;
+  }
+}
 
-    /* border-bottom-width: 7px;
-		border-bottom-style: solid;
-		border-image: linear-gradient(306deg, #3066be, #6d9dc5, #14bd91, #80ded9, #7dc7dd, #079fb7) 1 stretch; */
+.todo-list {
+  margin: 0;
+  padding: 1rem;
+  list-style: none;
+  &__item {
+    border: 0 solid rgba(#000, 0.2);
+    border-bottom-width: 1px;
+
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+  li {
+    display: flex;
+
+    position: relative;
+  }
+  &__text {
+    flex-grow: 2;
+    position: relative;
+    margin-left: 1.5rem;
+    padding: 0.5rem;
+    font-family: "Oswald", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    border: 0 solid rgba(#000, 0.2);
+    border-bottom-width: 1px;
+    cursor: pointer;
+
+    text-decoration: line-through;
+    color: rgba(#000, 0.5);
+    &.unchecked {
+      text-decoration: none;
+      color: #000;
+      &::before {
+        content: "\f10c";
+      }
+    }
+    &::before {
+      content: "\f00c";
+      position: absolute;
+      left: -2rem;
+      top: 50%;
+      transform: translateY(calc(-50% + 3px));
+
+      font-family: "icomoon";
+      @include gradient-bg;
+    }
+  }
+  &__remove {
+    position: relative;
+    line-height: 2rem;
+    padding: 1rem;
+
+    &::before {
+      content: "\f00d";
+      position: absolute;
+
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-family: "icomoon";
+      font-size: 1.2rem;
+      @include gradient-bg;
+    }
+  }
+}
+
+.todo-input {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.5rem;
+
+  &__item {
+    display: block;
+    width: 100%;
+
+    margin: 0 0 0 1rem;
+    padding-left: 1.5rem;
+    border: 0 solid rgba(#000, 0.2);
+    border-bottom-width: 1px;
+
+    background-color: transparent;
+    outline: none;
 
     font-family: "Oswald", sans-serif;
-    font-size: 24px;
-	}
-	&-inner{
-		background-color: rgba(#fff, 0.95);
-		height: 500px;
-		width: 100%;
-
-	}
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    &::placeholder {
+      color: rgba(#000, 0.2);
+      font-style: italic;
+      font-size: 1.5rem;
+    }
+    &.error {
+      &::placeholder {
+        color: rgba(#ff6347, 0.7);
+        transition: 0.2s ease-in-out;
+      }
+    }
+  }
+  &__btn {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    @include gradient-bg;
+    background-color: #ff6347;
+    font-family: "Oswald", sans-serif;
+    font-size: 2rem;
+  }
 }
 
 @import "media";
