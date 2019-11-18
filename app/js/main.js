@@ -34,6 +34,14 @@
 		toDoList.insertAdjacentHTML("afterend", element);
 
 		document.querySelector(".todo-input__item").setAttribute("autofocus", true);
+		/* document.addEventListener('keydown', function(event) {
+			if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
+				alert('Отменить!')
+			}
+		}); */
+		document.addEventListener("keydown", (event) => {
+			if (event.key === "Enter") addLocalItem();
+		});
 		document.querySelector(".todo-input__item").setAttribute("placeholder", "write something");
 
 
@@ -67,7 +75,6 @@
 		let item = document.querySelector(".todo-input__item");
 
 		if (item.value === "" || item.value === undefined) {
-			console.log("Done!");
 			item.classList.toggle("error");
 		} else {
 			localStorage[item.value] = "unchecked";
